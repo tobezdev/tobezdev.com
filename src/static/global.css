@@ -329,8 +329,8 @@ nav {
 	width: 8px;
 	height: 8px;
 	border-radius: 50%;
-	background: var(--primary);
-	box-shadow: 0 0 8px rgba(129, 140, 248, 0.5);
+	background: #4fff84;
+	box-shadow: 0 0 8px rgba(79, 255, 132, 0.5);
 	animation: pulse-dot-grn 2s ease-in-out infinite;
 }
 
