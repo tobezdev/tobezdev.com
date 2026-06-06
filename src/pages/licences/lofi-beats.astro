@@ -1,163 +1,104 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-/**
- * Each experience entry. Update this array whenever your CV changes —
- * no need to touch the markup below.
- */
-const experience = [
-	{
-		org: 'Audius',
-		orgUrl: 'https://audius.co/',
-		logo: '/assets/audius-logo-nobg.webp',
-		logoAlt: 'Audius Logo',
-		role: 'Community Manager & Artist Relations Assistant',
-		period: 'Jul 2025 – Mar 2026',
-		description:
-			'Community management, user support, and artist engagement for a decentralised music platform. Also contributed to platform development including the website, a custom $AUDIO Discord bot, and blockchain tooling.',
-		tags: ['Community', 'Web3', 'Blockchain'],
-	},
-	{
-		org: 'South Western Railway',
-		orgUrl: 'https://southwesternrailway.com/',
-		logo: '/assets/swr-logo-nobg.png',
-		logoAlt: 'South Western Railway Logo',
-		role: 'Gateline & Platform Operations Assistant',
-		period: 'Jun 2025 – Sept 2025',
-		description:
-			'Front-line passenger assistance — ticketing, travel advice, and station operations. Ensured smooth service delivery and resolved customer issues in a fast-paced environment.',
-		tags: ['Customer Service', 'Operations', 'Travel'],
-	},
-	{
-		org: 'Curity',
-		orgUrl: 'https://curity.io/',
-		logo: '/assets/curity-logo.jpeg',
-		logoAlt: 'Curity Logo',
-		role: 'Security Development Partner',
-		period: 'Apr 2024 – Jun 2025',
-		description:
-			'Performed security vulnerability analysis and helped deliver real-time threat intelligence feeds to enterprise clients.',
-		tags: ['Security', 'Vulnerability Analysis', 'Python'],
-	},
+const quickLinks = [
+	{ label: 'Summary Of Terms', href: '#summary-of-terms' },
+	{ label: 'Additional Notices', href: '#additional-notices' },
+	{ label: 'Recommended Attribution', href: '#recommended-attribution' },
 ];
 ---
 
 <BaseLayout
-	title="Portfolio"
-	description="Experience, contact details, and recent work from tobezdev."
+	title="Lo-fi Background Music Licence"
+	description="Licence terms and attribution details for the track use page."
 	navLinks={[
 		{ label: 'Home', href: '/' },
-		{ label: '#experience', href: '#experience' },
-		{ label: '#contact', href: '#contact' },
+		{ label: 'Portfolio', href: '/portfolio' },
 	]}
 >
-	<h1>Hey, I'm tobezdev.</h1>
-
-	<p class="availability">
-		<a href="#contact">Available for Commissions — contact for more info!</a
-		>
+	<h1>Lo-fi Background Music Licence</h1>
+	<p>
+		tobezdev / remixify's <a
+			href="https://remixify.com/lo-fi-background-beats"
+			target="_blank"
+			rel="noopener noreferrer">Lo-Fi Background Beats</a
+		> is licensed under the <a
+			href="https://creativecommons.org/licenses/by-nd/4.0/"
+			target="_blank"
+			rel="noopener noreferrer"
+			>Creative Commons Attribution-NoDerivatives 4.0 International
+			License</a
+		>. Provided below is a short summary of what this license permits,
+		however, you should not treat this as legal advice. For full terms, read
+		the full license text: <a
+			href="https://creativecommons.org/licenses/by-nd/4.0/legalcode.txt"
+			target="_blank"
+			rel="noopener noreferrer"
+			>https://creativecommons.org/licenses/by-nd/4.0/legalcode.txt</a
+		>.
 	</p>
-
-	<!-- ── Experience ─────────────────────────────────────────────────────── -->
-	<h2 id="experience">Experience</h2>
-
-	<ul class="exp-list" role="list">
+	<h2>Quick Links</h2>
+	<ul class="quick-links" role="list">
 		{
-			experience.map(
-				({
-					org,
-					orgUrl,
-					logo,
-					logoAlt,
-					role,
-					period,
-					description,
-					tags,
-				}) => (
-					<li class="exp-card">
-						<div class="exp-card__header">
-							<img
-								src={logo}
-								alt={logoAlt}
-								class="exp-card__logo"
-								width="40"
-								height="40"
-							/>
-							<div class="exp-card__meta">
-								<a
-									href={orgUrl}
-									target="_blank"
-									rel="noopener noreferrer"
-									class="exp-card__org"
-								>
-									{org}
-								</a>
-								<span class="exp-card__role">{role}</span>
-							</div>
-							<span class="exp-card__period">{period}</span>
-						</div>
-						<p class="exp-card__desc">{description}</p>
-						<div class="exp-card__tags" aria-label="Skills">
-							{tags.map((tag) => (
-								<span class="tag">{tag}</span>
-							))}
-						</div>
-					</li>
-				)
-			)
+			quickLinks.map(({ label, href }) => (
+				<li>
+					<a href={href} class="quick-links__item">
+						{label}
+					</a>
+				</li>
+			))
 		}
 	</ul>
-
-	<!-- ── Contact ────────────────────────────────────────────────────────── -->
-	<h2 id="contact">Let's Connect</h2>
-
-	<ul class="contact-list" role="list">
+	<h2 id="summary-of-terms">Summary of Terms</h2>
+	<ul>
 		<li>
-			<a href="mailto:toby@tobezdev.com" class="contact-list__item">
-				✉ toby@tobezdev.com
-			</a>
+			You are free to share (copy and redistribute) the material in any
+			medium or format for any purpose, even commercially.
 		</li>
 		<li>
-			<a
-				href="https://linkedin.com/in/tobezdev"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="contact-list__item"
-			>
-				<img
-					src="https://iili.io/q5eoXgR.md.png"
-					alt=""
-					width="16"
-					height="16"
-					aria-hidden="true"
-				/>
-				in/tobezdev
-			</a>
+			You must give appropriate credit, provide a link to the license, and
+			indicate if changes were made. You may do so in any reasonable
+			manner, but not in any way that suggests the licensor endorses you
+			or your use.
 		</li>
 		<li>
-			<a
-				href="https://discordapp.com/users/969254887621820526"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="contact-list__item"
-			>
-				<img
-					src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e3d7f4ef6498ac018f2c55_Symbol.svg"
-					alt=""
-					width="16"
-					height="16"
-					aria-hidden="true"
-				/>
-				@tobezdev
-			</a>
+			If you remix, transform, or build upon the material, you may not
+			distribute the modified material.
 		</li>
 	</ul>
-
-	<p class="asset-notice">
-		Some assets on this page are copyright protected and are used with
-		explicit written permission from the copyright owner(s) — please consult
-		the asset copyright owner for permission before using any assets on this
-		page.
+	<h2 id="additional-notices">Additional Notices</h2>
+	<ul>
+		<li>
+			You do not have to comply with the license for elements of the
+			material in the public domain or where your use is permitted by an
+			applicable exception or limitation.
+		</li>
+		<li>
+			No warranties are given. The license may not give you all of the
+			permissions necessary for your intended use. For example, other
+			rights such as publicity, privacy, or moral rights may limit how you
+			use the material.
+		</li>
+		<li>
+			You may not apply legal terms or technological measures that legally
+			restrict others from doing anything the license permits, or grant
+			access to material that the license does not permit to be accessed.
+		</li>
+	</ul>
+	<h2 id="recommended-attribution">Recommended Attribution</h2>
+	<p>
+		When using this material, it is recommended to include the following
+		attribution. You may, however, choose to attribute in a different way,
+		as long as it is reasonable and complies with the license terms.
+		<br />
+		<div class="attribution-card">
+			<p class="attributiion-text">
+				Background Music:<br />
+				Lo-Fi Background Beats by tobezdev / remixify on Audius<br />
+				https://audius.co/remixify/album/lo-fi-background-beats<br />
+				Licensed under CC BY-ND 4.0
+			</p>
+		</div>
 	</p>
 </BaseLayout>
 
@@ -285,5 +226,48 @@ const experience = [
 		color: var(--color-text-muted);
 		border-left: 2px solid var(--color-border);
 		padding-left: 0.85rem;
+	}
+
+	/* ── Quick Links ───────────────────────────────────────────────────────── */
+	.quick-links {
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem;
+	}
+
+	.quick-links__item {
+		font-size: 0.875rem;
+		color: var(--color-text-muted);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		padding: 0.4em 0.9em;
+		border-radius: var(--radius);
+		transition:
+			color 0.15s,
+			border-color 0.15s;
+	}
+
+	.quick-links__item:hover {
+		color: var(--color-text);
+		border-color: var(--color-accent);
+	}
+
+	/* ── Attribution Text  ───────────────────────────────────────────────────────── */
+	div .attribution-card {
+		margin-top: 1rem;
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		padding: 0.75rem;
+	}
+
+	div.attribution-card p.attributiion-text {
+		font-size: 0.875rem;
+		color: var(--color-text);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		padding: 0.4em 0.9em;
+		border-radius: var(--radius);
 	}
 </style>
