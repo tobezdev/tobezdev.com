@@ -129,12 +129,12 @@ const {
 	}
 
 	/* Contact email links */
-	.policy-body :global(a:not(.quick-links__item)) {
+	.policy-body :global(a:not(.quick-links__item, .btn)) {
 		color: var(--color-accent);
 		word-break: break-all;
 	}
 
-	.policy-body :global(a:not(.quick-links__item):hover) {
+	.policy-body :global(a:not(.quick-links__item, .btn):hover) {
 		color: var(--color-accent-hover);
 	}
 
@@ -214,5 +214,9 @@ const {
 		border-radius: 4px;
 		padding: 0.1em 0.45em;
 		color: var(--color-accent);
+	}
+
+	.policy-body :global(.btn--default-install) {
+		max-width: 100%;
 	}
 </style>
