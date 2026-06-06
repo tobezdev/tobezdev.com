@@ -59,6 +59,18 @@ const fullTitle = title === 'Home' ? 'tobezdev.com' : `${title} | tobezdev.com`;
 			rel="stylesheet"
 		/>
 
+		<script is:inline>
+			const theme =
+				localStorage.getItem('theme') ??
+				(window.matchMedia('(prefers-color-scheme: dark)').matches
+					? 'dark'
+					: 'light');
+			document.documentElement.classList.toggle(
+				'light',
+				theme === 'light'
+			);
+		</script>
+
 		<title>{fullTitle}</title>
 	</head>
 	<body>

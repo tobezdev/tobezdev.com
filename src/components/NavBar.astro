@@ -10,6 +10,8 @@
  * The active link is highlighted automatically based on the current URL path.
  */
 
+import ThemeToggle from '../components/ThemeToggle.astro';
+
 interface NavLink {
 	label: string;
 	href: string;
@@ -33,7 +35,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 <header class="navbar">
 	<nav class="navbar__inner" aria-label="Main navigation">
-		<a href="/" class="navbar__brand" aria-label="tobezdev – home">
+		<a href="/" class="navbar__brand" aria-label="tobezdev - home">
 			tobezdev
 		</a>
 
@@ -62,6 +64,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 				})
 			}
 		</ul>
+		<ThemeToggle />
 	</nav>
 </header>
 
