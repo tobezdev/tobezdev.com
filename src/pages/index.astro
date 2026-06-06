@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+---
+
+<BaseLayout
+	title="Home"
+	description="tobezdev - developer, community manager, and musician."
+>
+	<h1>Welcome!</h1>
+
+	<!-- ── Social Platforms ───────────────────────────────────────────────── -->
+	<h2>Social Platforms</h2>
+	<SocialLinks />
+
+	<!-- ── Quick Links ────────────────────────────────────────────────────── -->
+	<h2>Quick Links</h2>
+	<ul class="quick-links" role="list">
+		<li>
+			<a href="/portfolio" class="quick-links__card">
+				<span class="quick-links__name">Portfolio</span>
+				<span class="quick-links__desc">
+					Experience, contact details, and recent work.
+				</span>
+			</a>
+		</li>
+		<li>
+			<a href="/licences/lofi-beats" class="quick-links__card">
+				<span class="quick-links__name"
+					>Lo-fi Background Music Licence</span
+				>
+				<span class="quick-links__desc">
+					Licence terms and attribution details for the track use
+					page.
+				</span>
+			</a>
+		</li>
+		<li>
+			<a href="/audius-sotd" class="quick-links__card">
+				<span class="quick-links__name">Audius Song of the Day</span>
+				<span class="quick-links__desc">
+					A configurable Discord bot that sends daily songs from the
+					Audius platform, helping you discover new music.
+				</span>
+			</a>
+		</li>
+	</ul>
+</BaseLayout>
+
+<style>
+	.quick-links {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.quick-links__card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		padding: 1rem 1.25rem;
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		color: inherit;
+		transition:
+			border-color 0.15s,
+			background 0.15s;
+	}
+
+	.quick-links__card:hover {
+		border-color: var(--color-accent);
+		background: color-mix(
+			in srgb,
+			var(--color-accent) 5%,
+			var(--color-surface)
+		);
+	}
+
+	.quick-links__name {
+		font-size: 0.95rem;
+		font-weight: 600;
+		color: var(--color-text);
+	}
+
+	.quick-links__desc {
+		font-size: 0.82rem;
+		color: var(--color-text-muted);
+		line-height: 1.5;
+	}
+</style>

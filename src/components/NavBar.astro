@@ -1,0 +1,131 @@
+---
+/**
+ * Navbar.astro
+ * Site-wide navigation bar. Pass `links` to override the default nav items,
+ * or use the defaults which cover the main site pages.
+ *
+ * Props:
+ *   links?: { label: string; href: string }[]
+ *
+ * The active link is highlighted automatically based on the current URL path.
+ */
+
+interface NavLink {
+	label: string;
+	href: string;
+}
+
+interface Props {
+	links?: NavLink[];
+}
+
+const defaultLinks: NavLink[] = [
+	{ label: 'Home', href: '/' },
+	{ label: 'Portfolio', href: '/portfolio' },
+	{ label: 'Audius Song of the Day', href: '/audius-sotd' },
+];
+
+const { links = defaultLinks } = Astro.props;
+
+// Highlight the nav item whose href best matches the current path
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="navbar">
+	<nav class="navbar__inner" aria-label="Main navigation">
+		<a href="/" class="navbar__brand" aria-label="tobezdev – home">
+			tobezdev
+		</a>
+
+		<ul class="navbar__links" role="list">
+			{
+				links.map(({ label, href }) => {
+					const normHref = href.replace(/\/$/, '') || '/';
+					const isActive =
+						normHref === '/'
+							? currentPath === '/'
+							: currentPath.startsWith(normHref);
+					return (
+						<li>
+							<a
+								href={href}
+								class:list={[
+									'navbar__link',
+									{ 'navbar__link--active': isActive },
+								]}
+								aria-current={isActive ? 'page' : undefined}
+							>
+								{label}
+							</a>
+						</li>
+					);
+				})
+			}
+		</ul>
+	</nav>
+</header>
+
+<style>
+	.navbar {
+		position: fixed;
+		inset-block-start: 0;
+		inset-inline: 0;
+		height: var(--nav-height);
+		background: color-mix(in srgb, var(--color-bg) 80%, transparent);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border-bottom: 1px solid var(--color-border);
+		z-index: 100;
+	}
+
+	.navbar__inner {
+		max-width: var(--content-max);
+		margin: 0 auto;
+		padding: 0 var(--content-padding);
+		height: 100%;
+		display: flex;
+		align-items: center;
+		gap: 2rem;
+	}
+
+	.navbar__brand {
+		font-weight: 700;
+		font-size: 1rem;
+		color: var(--color-text);
+		letter-spacing: -0.01em;
+		flex-shrink: 0;
+	}
+
+	.navbar__brand:hover {
+		color: var(--color-accent);
+	}
+
+	.navbar__links {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+		list-style: none;
+		margin-left: auto;
+		flex-wrap: wrap;
+	}
+
+	.navbar__link {
+		font-size: 0.875rem;
+		color: var(--color-text-muted);
+		padding: 0.3em 0.65em;
+		border-radius: var(--radius);
+		transition:
+			color 0.15s,
+			background 0.15s;
+	}
+
+	.navbar__link:hover {
+		color: var(--color-text);
+		background: var(--color-surface);
+	}
+
+	.navbar__link--active {
+		color: var(--color-text);
+		background: var(--color-surface);
+	}
+</style>

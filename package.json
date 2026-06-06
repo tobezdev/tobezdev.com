@@ -1,0 +1,21 @@
+{
+  "name": "tobezdev-astro",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "cf-deploy": "npm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "astro": "^6.4.4"
+  },
+  "devDependencies": {
+    "@cloudflare/kv-asset-handler": "^0.5.0"
+  }
+}

@@ -1,0 +1,140 @@
+---
+import PolicyLayout from '../../layouts/PolicyLayout.astro';
+---
+
+<PolicyLayout
+	title="Installation & Setup"
+	description="How to install Audius Song of the Day on Discord and finish setup for your account or server."
+	lastUpdated={undefined}
+>
+	<h2>Choose your install context</h2>
+	<p>
+		Install to a guild for a shared channel, or install to your user account
+		for daily DMs.{' '}
+		<a
+			href="https://docs.discord.com/developers/resources/application#installation-context"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			What's the difference?
+		</a>
+	</p>
+
+	<div class="btn-row">
+		<a
+			href="https://discord.com/oauth2/authorize?client_id=1504248701412053052&permissions=4503599627390016&integration_type=0&scope=applications.commands+bot"
+			class="btn btn--primary"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			Install to a Guild
+			<span class="btn-label"
+				>Post the Song of the Day in a server channel and optionally
+				ping a role.</span
+			>
+		</a>
+		<a
+			href="https://discord.com/oauth2/authorize?client_id=1504248701412053052&integration_type=1&scope=applications.commands"
+			class="btn"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			Install to your User Account
+			<span class="btn-label"
+				>Receive a daily DM with the Song of the Day.</span
+			>
+		</a>
+		<a
+			href="https://discord.com/oauth2/authorize?client_id=1504248701412053052&integration_type=1&scope=applications.commands"
+			class="btn"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			Default Installation Link
+			<span class="btn-label"
+				>Manually configure your own settings through the Discord App
+				Install flow.</span
+			>
+		</a>
+	</div>
+
+	<div class="callout">
+		<strong>Warning:</strong> The Default Installation Link is not recommended
+		for regular users. If you don't know what this does, it's safer to stick to
+		the options above. If you break the installation, you may need to reinstall
+		the bot which may remove your settings.
+	</div>
+
+	<h2>Finish setup</h2>
+	<p>
+		If you've installed to your user account, you'll need to run <code
+			>/sotd subscribe</code
+		> to enable DM notifications.
+	</p>
+	<p>
+		If you've installed to a guild, choose the correct option below to
+		configure the bot.
+	</p>
+
+	<h3>I've never used ASOTD before</h3>
+	<p>
+		After installing, run the following commands to configure the bot for
+		your guild:
+	</p>
+	<ul>
+		<li><code>/sotd config set-role</code></li>
+		<li><code>/sotd config set-channel</code></li>
+		<li><code>/sotd config set-auto-thread</code></li>
+	</ul>
+	<p>
+		If the commands don't appear, restart your Discord client to refresh the
+		command list. If they still don't appear, you may need to wait a bit for
+		the Discord API to propagate the commands to your guild.
+	</p>
+
+	<h3>I've used ASOTD before and am re-installing</h3>
+	<p>
+		If you've uninstalled ASOTD from your guild in the last 30 days, your
+		configuration is still saved. Run <code>/sotd config restore</code> to restore
+		your old configuration.
+	</p>
+	<p>
+		If it's been more than 30 days, your data has been removed as per our{
+			' '
+		}
+		<a href="/audius-sotd/privacy">Privacy Policy</a> and you'll need to reconfigure
+		from scratch:
+	</p>
+	<ul>
+		<li><code>/sotd config set-role</code></li>
+		<li><code>/sotd config set-channel</code></li>
+		<li><code>/sotd config set-auto-thread</code></li>
+	</ul>
+
+	<h3>I don't know if I've used ASOTD before</h3>
+	<p>
+		Run <code>/sotd config status</code> to view your current settings. To change
+		any configuration, use the commands as if it were a new installation:
+	</p>
+	<ul>
+		<li><code>/sotd config set-role</code></li>
+		<li><code>/sotd config set-channel</code></li>
+		<li><code>/sotd config set-auto-thread</code></li>
+	</ul>
+
+	<h2>I have a question</h2>
+	<p>Create a GitHub issue and we'll help you ASAP, or email directly.</p>
+	<div class="btn-row">
+		<a
+			href="https://github.com/tobezdev/Audius-Song-of-the-Day/issues"
+			class="btn"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			⚡ Open a GitHub issue
+		</a>
+		<a href="mailto:toby@tobezdev.com" class="btn btn--primary">
+			✉ toby@tobezdev.com
+		</a>
+	</div>
+</PolicyLayout>
