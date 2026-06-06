@@ -16,7 +16,7 @@
 
 		const isLight = document.documentElement.classList.toggle('light');
 		localStorage.setItem('theme', isLight ? 'light' : 'dark');
-		btn.textContent = isLight ? '☀️' : '🌙';
+		btn.textContent = isLight ? '🌙' : '☀️';
 
 		window.setTimeout(() => {
 			document.documentElement.classList.remove('theme-transitioning');

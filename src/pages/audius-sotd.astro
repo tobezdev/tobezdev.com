@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SubpagesQuickLinks from '../components/SubpagesQuickLinks.astro';
 
 const credits = [
 	{
@@ -14,25 +15,6 @@ const credits = [
 		name: 'Open-Source Contributors',
 		url: 'https://github.com/tobezdev/audius-song-of-the-day/graphs/contributors',
 	},
-];
-
-const quickLinks = [
-	{ label: 'Terms of Service', href: '/audius-sotd/terms' },
-	{ label: 'Privacy Policy', href: '/audius-sotd/privacy' },
-	{ label: 'Cookie Policy', href: '/audius-sotd/cookies' },
-	{
-		label: 'Data Processing Agreement',
-		href: '/audius-sotd/data-processing',
-	},
-	{ label: 'Security Policy', href: '/audius-sotd/security' },
-	{
-		label: 'Installation & Setup Guide',
-		href: '/audius-sotd/installation-and-setup',
-	},
-	{
-		label: 'Contributing Guide',
-		href: '/audius-sotd/contributing',
-	}
 ];
 ---
 
@@ -69,19 +51,7 @@ const quickLinks = [
 	</ul>
 
 	<!-- ── Quick Links ────────────────────────────────────────────────────── -->
-	<h2>Quick Links</h2>
-
-	<ul class="quick-links" role="list">
-		{
-			quickLinks.map(({ label, href }) => (
-				<li>
-					<a href={href} class="quick-links__item">
-						{label}
-					</a>
-				</li>
-			))
-		}
-	</ul>
+	<SubpagesQuickLinks />
 </BaseLayout>
 
 <style>
@@ -97,29 +67,5 @@ const quickLinks = [
 		display: inline-flex;
 		font-weight: 600;
 		font-size: 0.95rem;
-	}
-
-	.quick-links {
-		list-style: none;
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.6rem;
-	}
-
-	.quick-links__item {
-		font-size: 0.875rem;
-		color: var(--color-text-muted);
-		background: var(--color-surface);
-		border: 1px solid var(--color-border);
-		padding: 0.4em 0.9em;
-		border-radius: var(--radius);
-		transition:
-			color 0.15s,
-			border-color 0.15s;
-	}
-
-	.quick-links__item:hover {
-		color: var(--color-text);
-		border-color: var(--color-accent);
 	}
 </style>
