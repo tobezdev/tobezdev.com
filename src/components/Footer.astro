@@ -24,31 +24,21 @@ const copyrightRange =
 
 <footer class="footer">
 	<div class="footer__inner">
-		<p class="footer__copy">
-			© {copyrightRange} tobezdev.com. All rights reserved.
-		</p>
-		<p class="footer__attr">
-			Website design &amp; development by tobezdev.
-		</p>
-
+		<div class="footer__left">
+			<p class="footer__copy">
+				© {copyrightRange} tobezdev.com. All rights reserved.
+			</p>
+			<p class="footer__attr">
+				Website design &amp; development by tobezdev.
+			</p>
+		</div>
+		<div class="footer__right">
 		{
 			showSponsor && (
-				<a
-					class="footer__sponsor"
-					href="https://github.com/sponsors/tobezdev"
-					target="_blank"
-					rel="noopener noreferrer"
-					aria-label="Sponsor tobezdev on GitHub"
-				>
-					<img
-						src="https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86"
-						alt="GitHub Sponsors"
-						width="116"
-						height="20"
-					/>
-				</a>
+				<iframe src="https://github.com/sponsors/tobezdev/button" title="Sponsor tobezdev" height="32" width="114" style="border: 0; border-radius: 6px;"></iframe>
 			)
 		}
+		</div>
 	</div>
 </footer>
 
@@ -63,10 +53,11 @@ const copyrightRange =
 		margin: 0 auto;
 		padding: 2rem var(--content-padding);
 		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 0.35rem;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
 	}
+
 
 	.footer__copy,
 	.footer__attr {
