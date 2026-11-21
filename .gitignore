@@ -1,5 +1,6 @@
 # build output
 dist/
+
 # generated types
 .astro/
 
@@ -26,3 +27,8 @@ pnpm-debug.log*
 .wrangler/
 wrangler.toml
 wrangler.jsonc
+
+# random notes and stuff 
+*.md
+!README.md
+!DESIGN-SYSTEM.md
