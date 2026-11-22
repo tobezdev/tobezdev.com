@@ -1,15 +1,5 @@
 @import "tailwindcss";
 
-@font-face {
-    font-family: "Obel Mono";
-    src: url("ObelMono-VF.woff2") format("woff2");
-    font-weight: 100 900;
-}
-
-@theme {
-    --font-om: "Obel Mono";
-}
-
 :root {
     color-scheme: dark;
 }
