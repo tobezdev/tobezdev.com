@@ -1,0 +1,35 @@
+---
+import Excavator from "../components/Excavator.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Not Found">
+	<div class="relative min-h-svh overflow-hidden bg-[#111314]">
+		<main class="flex h-dvh min-h-svh items-center justify-center px-6 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] text-center text-gray-200 sm:px-8 sm:py-16">
+			<section class="w-full max-w-2xl border-y border-gray-200/15 py-12 sm:py-16" aria-labelledby="page-title">
+				<Excavator class="mx-auto mb-8 w-56 sm:w-72" />
+				<h1 id="page-title" class="text-5xl font-semibold tracking-[-0.065em] leading-[0.98] sm:text-7xl">
+					<span class="text-red-400">404</span> Not Found
+				</h1>
+				<p class="mx-auto mt-6 max-w-lg text-base leading-7 text-gray-200 sm:text-lg">
+					We couldn't find the page you were looking for. It might have been moved, deleted, or just never existed in the first place.
+				</p>
+				<a
+					href="https://www.tobezdev.com/?ref=404"
+                    target="_parent"
+					class="mt-4 inline-flex items-center gap-2 rounded-lg px-4 py-2.5 font-mono text-sm text-gray-200 transition-colors duration-200 hover:bg-sky-400 hover:text-gray-800"
+				>
+					<span class="mso text-base" aria-hidden="true">home</span>
+					Go Home
+					<span class="mso text-base" aria-hidden="true">arrow_forward</span>
+				</a>
+			</section>
+		</main>
+		<footer class="absolute inset-x-0 bottom-0 px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] text-left text-sm text-gray-600 sm:px-8 sm:pb-8">
+			<div class="mx-auto flex w-full max-w-2xl flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+				<p>Made with <span class="mso">favorite</span> by Toby</p>
+				<p>&copy; 2023-{new Date().getFullYear()} tobezdev.com. All rights reserved.</p>
+			</div>
+		</footer>
+	</div>
+</BaseLayout>
