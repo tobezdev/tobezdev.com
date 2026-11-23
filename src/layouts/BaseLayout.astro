@@ -1,6 +1,6 @@
 ---
-const { pageTitle: title } = Astro.props;
-const pageTitle = title ? `${title} | tobezdev.com` : 'tobezdev.com';
+const { title: t } = Astro.props;
+const pageTitle = t ? `${t} | tobezdev.com` : 'tobezdev.com';
 
 const baseBackgroundStyle = 'bg-[#111314]';
 
