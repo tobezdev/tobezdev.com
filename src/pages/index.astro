@@ -1,11 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Excavator from "../components/Excavator.astro";
 ---
 
 <BaseLayout title="Home">
 	<div class="relative min-h-svh overflow-hidden bg-[#111314]">
 		<main class="flex h-dvh min-h-svh items-center justify-center px-6 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] text-center text-gray-200 sm:px-8 sm:py-16">
 			<section class="w-full max-w-2xl border-y border-gray-200/15 py-12 sm:py-16" aria-labelledby="page-title">
+				<Excavator class="mx-auto mb-8 w-56 sm:w-72" />
 				<h1 id="page-title" class="text-5xl font-semibold tracking-[-0.065em] leading-[0.98] sm:text-7xl">
 					Hey, I'm <span class="text-sky-400">Toby</span>!
 				</h1>

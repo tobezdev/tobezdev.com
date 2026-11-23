@@ -1,0 +1,202 @@
+---
+// Animated excavator for the under-construction page.
+// The arm is a chain of nested groups (boom -> stick -> bucket), each rotating
+// around its own pivot, so the joints stay connected through the dig cycle.
+const { class: className = "" } = Astro.props;
+---
+
+<svg
+	class:list={["excavator", className]}
+	viewBox="0 0 260 130"
+	role="img"
+	aria-label="A little excavator digging away"
+	xmlns="http://www.w3.org/2000/svg"
+>
+	<!-- dirt pile the excavator dumps onto -->
+	<path d="M196 110 Q206 98 216 96 Q226 98 236 110 Z" fill="#78350f" />
+	<path d="M204 104 Q212 99 218 99" stroke="#a16207" stroke-width="2" fill="none" stroke-linecap="round" />
+
+	<!-- falling dirt -->
+	<g class="falling-dirt" fill="#a16207">
+		<circle cx="211" cy="46" r="2.2" style="--dx:-3px; --delay:0s" />
+		<circle cx="216" cy="44" r="1.8" style="--dx:2px; --delay:0.06s" />
+		<circle cx="220" cy="48" r="2" style="--dx:5px; --delay:0.12s" />
+		<circle cx="214" cy="50" r="1.5" style="--dx:0px; --delay:0.18s" />
+		<circle cx="218" cy="42" r="1.4" style="--dx:-1px; --delay:0.24s" />
+	</g>
+
+	<!-- exhaust smoke -->
+	<g class="smoke" fill="#9ca3af">
+		<circle cx="97" cy="46" r="3" style="--delay:0s" />
+		<circle cx="97" cy="46" r="3" style="--delay:0.8s" />
+		<circle cx="97" cy="46" r="3" style="--delay:1.6s" />
+	</g>
+
+	<!-- tracks -->
+	<rect x="20" y="93" width="100" height="17" rx="8.5" fill="#374151" />
+	<rect x="20" y="93" width="100" height="17" rx="8.5" fill="none" stroke="#1f2937" stroke-width="2" stroke-dasharray="4 3" />
+	<g fill="#6b7280">
+		<circle cx="30" cy="101.5" r="5" />
+		<circle cx="50" cy="101.5" r="4" />
+		<circle cx="70" cy="101.5" r="4" />
+		<circle cx="90" cy="101.5" r="4" />
+		<circle cx="110" cy="101.5" r="5" />
+	</g>
+
+	<!-- upper body (rumbles with the engine) -->
+	<g class="body">
+		<rect x="36" y="87" width="74" height="6" fill="#1f2937" />
+		<rect x="22" y="65" width="14" height="23" rx="4" fill="#b45309" />
+		<rect x="30" y="61" width="86" height="27" rx="3" fill="#f59e0b" />
+		<rect x="30" y="80" width="86" height="4" fill="#d97706" />
+		<path d="M40 61 V38 Q40 35 43 35 H66 L74 50 V61 Z" fill="#fbbf24" />
+		<path d="M44 58 V40 Q44 39 45 39 H64 L70 51 V58 Z" fill="#38bdf8" fill-opacity="0.35" />
+		<path d="M47 41 L53 41 L48 50 Z" fill="#e0f2fe" fill-opacity="0.5" />
+		<rect x="95" y="49" width="4" height="12" rx="1" fill="#374151" />
+		<rect x="52" y="31" width="7" height="4" rx="1.5" fill="#374151" />
+		<circle class="beacon" cx="55.5" cy="30" r="3" fill="#fb923c" />
+		<!-- boom cylinder -->
+		<line x1="100" y1="80" x2="118" y2="68" stroke="#9ca3af" stroke-width="4" stroke-linecap="round" />
+	</g>
+
+	<!-- arm: boom -> stick -> bucket -->
+	<g class="boom">
+		<path d="M103 75 L112 63 L160 22 L168 31 L116 76 Z" fill="#f59e0b" />
+		<path d="M114 70 L163 28" stroke="#d97706" stroke-width="2" />
+		<circle cx="108" cy="70" r="4" fill="#374151" />
+		<g class="stick">
+			<path d="M158 26 L168 26 L195 84 L186 88 Z" fill="#fbbf24" />
+			<line x1="168" y1="32" x2="188" y2="76" stroke="#9ca3af" stroke-width="2.5" stroke-linecap="round" />
+			<circle cx="163" cy="28" r="4" fill="#374151" />
+			<g class="bucket">
+				<path d="M190 86 L203 92 Q206 106 192 108 L184 104 Z" fill="#6b7280" />
+				<path d="M184 104 L181 107 L186 106 L184 109 L190 108" fill="#d1d5db" />
+				<ellipse class="load" cx="197" cy="95" rx="6" ry="4" fill="#a16207" />
+				<circle cx="190" cy="86" r="3" fill="#374151" />
+			</g>
+		</g>
+	</g>
+
+	<!-- ground (drawn last so the bucket disappears into it) -->
+	<rect x="0" y="110" width="260" height="25" fill="#111314" />
+	<path d="M0 110 H140 Q160 114 180 110 H260" stroke="rgb(229 231 235 / 0.15)" stroke-width="1.5" fill="none" />
+	<g fill="#a16207" class="kicked-dirt">
+		<circle cx="158" cy="109" r="1.5" style="--dx:-6px" />
+		<circle cx="165" cy="109" r="1.2" style="--dx:3px" />
+		<circle cx="170" cy="109" r="1.6" style="--dx:7px" />
+	</g>
+</svg>
+
+<style>
+	.excavator {
+		--cycle: 5s;
+		overflow: visible;
+	}
+
+	.excavator g,
+	.excavator circle {
+		transform-box: view-box;
+	}
+
+	.boom {
+		transform-origin: 108px 70px;
+		animation: boom var(--cycle) ease-in-out infinite;
+	}
+	.stick {
+		transform-origin: 163px 28px;
+		animation: stick var(--cycle) ease-in-out infinite;
+	}
+	.bucket {
+		transform-origin: 190px 86px;
+		animation: bucket var(--cycle) ease-in-out infinite;
+	}
+	.load {
+		animation: load var(--cycle) steps(1, end) infinite;
+	}
+
+	@keyframes boom {
+		0%, 100% { transform: rotate(-8deg); }
+		25% { transform: rotate(18deg); }
+		40% { transform: rotate(16deg); }
+		55%, 80% { transform: rotate(-18deg); }
+		92% { transform: rotate(-8deg); }
+	}
+	@keyframes stick {
+		0%, 100% { transform: rotate(-15deg); }
+		25% { transform: rotate(10deg); }
+		40% { transform: rotate(30deg); }
+		55% { transform: rotate(15deg); }
+		70%, 80% { transform: rotate(-25deg); }
+		92% { transform: rotate(-15deg); }
+	}
+	@keyframes bucket {
+		0%, 100% { transform: rotate(-10deg); }
+		25% { transform: rotate(20deg); }
+		40% { transform: rotate(70deg); }
+		55%, 70% { transform: rotate(75deg); }
+		80% { transform: rotate(-40deg); }
+		92% { transform: rotate(-10deg); }
+	}
+	@keyframes load {
+		0%, 34% { opacity: 0; }
+		35%, 74% { opacity: 1; }
+		75%, 100% { opacity: 0; }
+	}
+
+	.falling-dirt circle {
+		opacity: 0;
+		animation: fall var(--cycle) ease-in infinite;
+		animation-delay: var(--delay);
+	}
+	@keyframes fall {
+		0%, 74% { opacity: 0; transform: translate(0, 0); }
+		76% { opacity: 1; transform: translate(0, 0); }
+		86% { opacity: 1; transform: translate(var(--dx), 56px); }
+		88%, 100% { opacity: 0; transform: translate(var(--dx), 56px); }
+	}
+
+	.kicked-dirt circle {
+		opacity: 0;
+		animation: kick var(--cycle) ease-out infinite;
+	}
+	@keyframes kick {
+		0%, 24% { opacity: 0; transform: translate(0, 0); }
+		28% { opacity: 1; transform: translate(calc(var(--dx) / 2), -8px); }
+		34% { opacity: 0; transform: translate(var(--dx), 0); }
+		100% { opacity: 0; }
+	}
+
+	.body {
+		animation: rumble 0.18s linear infinite alternate;
+	}
+	@keyframes rumble {
+		from { transform: translateY(0); }
+		to { transform: translateY(0.6px); }
+	}
+
+	.beacon {
+		animation: beacon 1s ease-in-out infinite;
+	}
+	@keyframes beacon {
+		0%, 100% { opacity: 1; filter: drop-shadow(0 0 3px #fb923c); }
+		50% { opacity: 0.3; filter: none; }
+	}
+
+	.smoke circle {
+		opacity: 0;
+		transform-origin: 97px 46px;
+		animation: smoke 2.4s ease-out infinite;
+		animation-delay: var(--delay);
+	}
+	@keyframes smoke {
+		0% { opacity: 0.5; transform: translate(0, 0) scale(0.6); }
+		100% { opacity: 0; transform: translate(-10px, -24px) scale(2); }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.excavator *,
+		.excavator *::before {
+			animation: none !important;
+		}
+	}
+</style>
