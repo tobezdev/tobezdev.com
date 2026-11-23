@@ -1,5 +1,6 @@
 ---
 import Excavator from "../components/Excavator.astro";
+import Footer from "../components/Footer.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
@@ -25,11 +26,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 				</a>
 			</section>
 		</main>
-		<footer class="absolute inset-x-0 bottom-0 px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] text-left text-sm text-gray-600 sm:px-8 sm:pb-8">
-			<div class="mx-auto flex w-full max-w-2xl flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-				<p>Made with <span class="mso">favorite</span> by Toby</p>
-				<p>&copy; 2023-{new Date().getFullYear()} tobezdev.com. All rights reserved.</p>
-			</div>
-		</footer>
+		<Footer />
 	</div>
 </BaseLayout>
